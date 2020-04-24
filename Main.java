@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
@@ -40,12 +42,24 @@ public class Main extends JFrame {
 		setResizable(false);
 		
 		JButton btnNewButton = new JButton("Projects");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Projects project = new Projects();
+				project.setVisible(true);
+			}
+		});
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(Color.BLUE);
 		btnNewButton.setBounds(329, 107, 145, 65);
 		contentPane.add(btnNewButton);
 		
 		JButton btnProjects = new JButton("Notes");
+		btnProjects.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Notes note = new Notes();
+				note.setVisible(true);
+			}
+		});
 		btnProjects.setForeground(Color.WHITE);
 		btnProjects.setBackground(Color.BLUE);
 		btnProjects.setBounds(329, 276, 145, 65);
