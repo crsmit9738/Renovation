@@ -1,3 +1,4 @@
+package Code;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
@@ -40,7 +42,7 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setResizable(false);
-		
+
 		JButton btnNewButton = new JButton("Projects");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -1,3 +1,4 @@
+package Code;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Notes extends JFrame {
@@ -98,8 +100,11 @@ public class Notes extends JFrame {
 			JButton btnNewButton = new JButton(title.getString(1).toUpperCase());
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Notes note = new Notes();
-					note.setVisible(true);
+					try {
+						new TextArea(title.getString(1)).setVisible(true);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			});
 			btnNewButton.setForeground(Color.WHITE);

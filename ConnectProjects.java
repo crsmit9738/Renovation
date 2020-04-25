@@ -1,3 +1,4 @@
+package Code;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ConnectProjects {
 	                + "Price DOUBLE\n"
 	                + ");";
 	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
-	                java.sql.Statement statement = conn.createStatement()) {
+	            java.sql.Statement statement = conn.createStatement()) {
 	            statement.execute(sql);
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());

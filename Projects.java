@@ -1,3 +1,4 @@
+package Code;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -101,8 +102,11 @@ public class Projects extends JFrame {
 				JButton btnNewButton = new JButton(project.getString(1).toUpperCase());
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Items item = new Items();
-						note.setVisible(true);
+						try {
+							new Items(project.getString(1)).setVisible(true);
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
 					}
 				});
 				btnNewButton.setForeground(Color.WHITE);
