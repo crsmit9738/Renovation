@@ -17,12 +17,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.Button;
+import java.awt.Color;
 
 public class AddItem extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -36,11 +38,17 @@ public class AddItem extends JDialog {
 			e.printStackTrace();
 		}
 	}
+	public AddItem() {
+		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setLayout(null);
+		
+	}
 
 	/**
 	 * Create the dialog.
+	 * @param userInput 
 	 */
-	public AddItem() {
+	public AddItem(String userInput) {
 		setBounds(100, 100, 526, 357);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,7 +56,7 @@ public class AddItem extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JLabel lblNewLabel = new JLabel("Picture:");
-			lblNewLabel.setBounds(10, 23, 70, 23);
+			lblNewLabel.setBounds(10, 62, 70, 23);
 			contentPanel.add(lblNewLabel);
 		}
 		{
@@ -80,7 +88,7 @@ public class AddItem extends JDialog {
 		textField_1.setBounds(79, 241, 86, 20);
 		contentPanel.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		Button button = new Button("Upload");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,10 +104,14 @@ public class AddItem extends JDialog {
 				} catch (FileNotFoundException e1) { 
 					e1.printStackTrace();
 				}
+				JLabel lblNewLabel_2 = new JLabel(userInput);
+				lblNewLabel_2.setBounds(185, 11, 46, 14);
+				getContentPane().add(lblNewLabel_2);
 			}
 		});
-		button.setBounds(79, 23, 70, 22);
+		button.setBounds(77, 63, 70, 22);
 		contentPanel.add(button);
+		
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -108,11 +120,11 @@ public class AddItem extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						FileInputStream inputStream = (FileInputStream) getIconImages();
-						String userInput = textField.getText();
-						String userInput2 = textPane.getText();
-						String userInput3 = textField_1.getText();
-						ConnectProjects.createProject(userInput);
+						String Title = userInput;
+						String Name = textField.getText();
+						String Idea = textPane.getText();
+						String Price = textField_1.getText();
+						ConnectProjects.addToTable(Title, Name, Idea, Price);
 						setVisible(false);
 					}
 				});

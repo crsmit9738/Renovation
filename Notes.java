@@ -69,6 +69,7 @@ public class Notes extends JFrame {
 		});
 		mnFile.add(menuItem);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -97,14 +98,11 @@ public class Notes extends JFrame {
 	    ResultSet title = statement.executeQuery("Show Tables");
 	    int x = 0, y = 165, wide = 483, height = 39;
 	    for(; title.next(); y+=39) {
-			JButton btnNewButton = new JButton(title.getString(1).toUpperCase());
+	    	String noteTitle = title.getString(1);
+			JButton btnNewButton = new JButton(noteTitle.toUpperCase());
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					try {
-						new TextArea(title.getString(1)).setVisible(true);
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
+					new TextArea(noteTitle).setVisible(true);
 				}
 			});
 			btnNewButton.setForeground(Color.WHITE);
