@@ -20,7 +20,7 @@ public class DeleteNote extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			DeleteNote dialog = new DeleteNote();
+			DeleteTable dialog = new DeleteTable();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {

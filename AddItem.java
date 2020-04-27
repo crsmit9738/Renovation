@@ -55,11 +55,6 @@ public class AddItem extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblNewLabel = new JLabel("Picture:");
-			lblNewLabel.setBounds(10, 62, 70, 23);
-			contentPanel.add(lblNewLabel);
-		}
-		{
 			JLabel lblName = new JLabel("Name:");
 			lblName.setBounds(10, 136, 70, 23);
 			contentPanel.add(lblName);
@@ -88,29 +83,6 @@ public class AddItem extends JDialog {
 		textField_1.setBounds(79, 241, 86, 20);
 		contentPanel.add(textField_1);
 		textField_1.setColumns(10);
-
-		Button button = new Button("Upload");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser photo = new JFileChooser();
-				photo.showOpenDialog(null);
-				File file = photo.getSelectedFile();
-				JLabel lblNewLabel_1 = new JLabel("");
-				lblNewLabel_1.setBounds(178, 11, 113, 102);
-				contentPanel.add(lblNewLabel_1);
-				lblNewLabel_1.setIcon(new ImageIcon(photo.toString()));
-				try {
-					FileInputStream inputStream = new FileInputStream(file);
-				} catch (FileNotFoundException e1) { 
-					e1.printStackTrace();
-				}
-				JLabel lblNewLabel_2 = new JLabel(userInput);
-				lblNewLabel_2.setBounds(185, 11, 46, 14);
-				getContentPane().add(lblNewLabel_2);
-			}
-		});
-		button.setBounds(77, 63, 70, 22);
-		contentPanel.add(button);
 		
 		{
 			JPanel buttonPane = new JPanel();

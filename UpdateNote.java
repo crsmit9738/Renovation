@@ -2,59 +2,54 @@ package Code;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+import javax.swing.JTextPane;
 
-public class DeleteItem extends JDialog {
+public class UpdateNote extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			DeleteItem dialog = new DeleteItem();
+			UpdateNote dialog = new UpdateNote();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public DeleteItem() {
-		getContentPane().setBackground(Color.WHITE);
+	public UpdateNote(){
 		
 	}
 
 	/**
 	 * Create the dialog.
-	 * @param userInput 
 	 */
-	public DeleteItem(String userInput) {
+	public UpdateNote(String userInput) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblNewLabel = new JLabel("Enter Name of Item You Would Like to Delete:");
-			lblNewLabel.setBounds(10, 109, 254, 14);
+			JLabel lblNewLabel = new JLabel("Update Text:");
+			lblNewLabel.setBounds(10, 111, 103, 14);
 			contentPanel.add(lblNewLabel);
 		}
 		
-		textField = new JTextField();
-		textField.setBounds(262, 106, 168, 20);
-		contentPanel.add(textField);
-		textField.setColumns(10);
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(87, 57, 265, 135);
+		contentPanel.add(textPane);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -63,9 +58,9 @@ public class DeleteItem extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						String title = userInput;
-						String Name = textField.getText();
-						ConnectProjects.deleteItem(title, Name);
+						String Title = userInput;
+						String Body = textPane.getText();
+						ConnectNotes.UpdateNote(Title, Body);
 						setVisible(false);
 					}
 				});
@@ -75,11 +70,6 @@ public class DeleteItem extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
-					}
-				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

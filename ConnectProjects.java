@@ -17,7 +17,6 @@ public class ConnectProjects {
 	
 	public static void createProject(String userInput) {
 		 String sql = "CREATE TABLE IF NOT EXISTS " + userInput +" (\n"
-	                + "Picture BLOB,\n"
 	                + "ProductName VARCHAR(30),\n"
 	                + "Idea VARCHAR(50),\n"
 	                + "Price DOUBLE\n"

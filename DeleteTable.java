@@ -15,9 +15,6 @@ public class DeleteTable extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		try {
 			DeleteTable dialog = new DeleteTable();
@@ -38,7 +35,7 @@ public class DeleteTable extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Are you sure you want to delete " + userInput + "?");
-		lblNewLabel.setBounds(78, 52, 209, 14);
+		lblNewLabel.setBounds(78, 52, 240, 14);
 		contentPanel.add(lblNewLabel);
 		{
 				JPanel buttonPane = new JPanel();

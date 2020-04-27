@@ -68,7 +68,7 @@ public class TextArea extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Save");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddItem name = new AddItem();
+				UpdateNote name = new UpdateNote(userInput);
 				name.setVisible(true);
 			}
 		});
