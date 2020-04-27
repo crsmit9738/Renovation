@@ -49,5 +49,14 @@ public class ConnectProjects {
 	            System.out.println(e.getMessage());
 	        }
 	    }
+	public static void deleteTable(String Title) {
+		 String sql = "DROP TABLE "+ Title +";";
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
+	            java.sql.Statement statement = conn.createStatement()) {
+	            statement.execute(sql);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
 	}
 

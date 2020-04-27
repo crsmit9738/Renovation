@@ -1,4 +1,5 @@
 package Code;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class TitleNamer extends JDialog {
+public class DeleteText extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -22,48 +23,53 @@ public class TitleNamer extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			TableNamer dialog = new TableNamer();
+			DeleteText dialog = new DeleteText();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	public DeleteText() {
+		getContentPane().setBackground(Color.WHITE);
+		
+	}
 
 	/**
 	 * Create the dialog.
+	 * @param userInput 
 	 */
-	public TitleNamer() {
-		setBounds(100, 100, 450, 188);
+	public DeleteText(String userInput) {
+		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Name of New Note:");
-		lblNewLabel.setBounds(30, 53, 112, 14);
-		contentPanel.add(lblNewLabel);
+		{
+			JLabel lblNewLabel = new JLabel("Enter text You Would Like to Delete:");
+			lblNewLabel.setBounds(10, 109, 236, 14);
+			contentPanel.add(lblNewLabel);
+		}
 		
 		textField = new JTextField();
-		textField.setBounds(141, 50, 151, 20);
+		textField.setBounds(238, 106, 168, 20);
 		contentPanel.add(textField);
 		textField.setColumns(10);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(Color.WHITE);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						String userInput = textField.getText();
-						ConnectNotes.createNote(userInput);
+						String title = userInput;
+						String body = textField.getText();
+						ConnectNotes.deleteText(title, body);
 						setVisible(false);
 					}
 				});
+				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}

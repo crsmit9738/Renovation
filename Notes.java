@@ -45,7 +45,7 @@ public class Notes extends JFrame {
 	public Notes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
-		
+		setTitle("Notes");
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		

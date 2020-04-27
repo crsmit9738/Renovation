@@ -77,7 +77,8 @@ public class TextArea extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Delete Note");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				DeleteNote name = new DeleteNote();
+				name.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);

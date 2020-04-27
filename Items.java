@@ -82,6 +82,14 @@ public class Items extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Delete Table");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteTable name = new DeleteTable(userInput);
+				name.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("< Back");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {

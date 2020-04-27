@@ -31,4 +31,23 @@ public class ConnectNotes {
 	            System.out.println(e.getMessage());
 	        }
 	}
-		} 
+	public static void deleteText(String Title, String text) {
+		 String sql = "DELETE FROM " + Title +"\n"
+				    + "WHERE Body ='"+ text + "';";
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
+	            java.sql.Statement statement = conn.createStatement()) {
+	            statement.execute(sql);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
+	public static void deleteNote(String Title) {
+		 String sql = "DROP TABLE "+ Title +";";
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
+	            java.sql.Statement statement = conn.createStatement()) {
+	            statement.execute(sql);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
+	} 
