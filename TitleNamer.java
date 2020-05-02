@@ -1,4 +1,9 @@
 package Code;
+/*This set of code is designated for creating
+ *a note by creating a new note table. It sends the
+ *information to the createNote method in ConnectNotes
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -30,9 +35,10 @@ public class TitleNamer extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public TitleNamer() {
 		setBounds(100, 100, 450, 188);
 		getContentPane().setLayout(new BorderLayout());
@@ -54,11 +60,11 @@ public class TitleNamer extends JDialog {
 			buttonPane.setBackground(Color.WHITE);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
+			{//end gui design
 				JButton okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				okButton.addActionListener(new ActionListener() {//takes the userinput in the textfield and 
+					public void actionPerformed(ActionEvent e) { //sends it to createNote to make the new note table.
 						String userInput = textField.getText();
 						ConnectNotes.createNote(userInput);
 						setVisible(false);
@@ -69,7 +75,7 @@ public class TitleNamer extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false);
 					}

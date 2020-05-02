@@ -1,4 +1,8 @@
 package Code;
+/*Items will list the current items in the button that was clicked in the previous page.
+ * the button sends the name to this page and then uses this name to execute an SQL
+ * command to populate the table with items found in the table name given.
+ * */
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.*;
@@ -69,8 +73,8 @@ public class Items extends JFrame {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Add Item");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AddItem name = new AddItem(userInput);
+			public void actionPerformed(ActionEvent e) {//opens addItem dialogue box
+				AddItem name = new AddItem(userInput);//sends title to add item table.
 				name.setVisible(true);
 			}
 		});
@@ -78,16 +82,16 @@ public class Items extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Delete Item");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DeleteItem name = new DeleteItem(userInput);
+			public void actionPerformed(ActionEvent e) {//opens deleteItem dialogue box
+				DeleteItem name = new DeleteItem(userInput);//sends title of table to deleteitem
 				name.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Delete Table");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DeleteTable name = new DeleteTable(userInput);
+			public void actionPerformed(ActionEvent e) {//opens deletetable dialogue box
+				DeleteTable name = new DeleteTable(userInput);//sends title to delete table.
 				name.setVisible(true);
 			}
 		});
@@ -95,7 +99,7 @@ public class Items extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("< Back");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//closes the current window and goes to previous window before it.
 				setVisible(false);
 			}
 		});
@@ -108,31 +112,14 @@ public class Items extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 102, 430, 186);
 		contentPane.add(scrollPane);
-		JLabel lblNewLabel_1 = new JLabel("Total Price:");
-		lblNewLabel_1.setBounds(273, 214, 64, 14);
-		getContentPane().add(lblNewLabel_1);
-		String sql = "Select SUM(Price)"
-				    + "FROM " + userInput +";";
-	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
-	            java.sql.Statement statement = conn.createStatement()) {
-	            ResultSet price = statement.executeQuery(sql);
-	            while (price.next()) {
-	        	String sum = price.getString(1);
-	    		JLabel lblNewLabel_2 = new JLabel(sum);
-	    		lblNewLabel_2.setBounds(341, 214, 64, 14);
-	    		getContentPane().add(lblNewLabel_2);
-	            }
-	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	        }
-		table = new JTable();
+		table = new JTable();//makes a new jtable
 		scrollPane.setViewportView(table);
-		String sqlCommand = "Select * FROM " + userInput;
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
+		String sqlCommand = "Select * FROM " + userInput;//makes sql command that will get all info from table name.
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//connect to database
 	            java.sql.Statement statement = conn.createStatement()) {
-	            PreparedStatement pst = (PreparedStatement) conn.prepareStatement(sqlCommand);
-	            ResultSet rs = pst.executeQuery();
-	            table.setModel(DbUtils.resultSetToTableModel(rs));
+	            PreparedStatement pst = (PreparedStatement) conn.prepareStatement(sqlCommand);//makes statement be the sql command.
+	            ResultSet rs = pst.executeQuery();//executes sql command in database.
+	            table.setModel(DbUtils.resultSetToTableModel(rs));//fills the database table with information. Needs rs2xlr.jar
         } catch (SQLException e) {
 			e.printStackTrace();
 		} 

@@ -1,4 +1,9 @@
 package Code;
+/*This set of code is designated for creating
+ *an new to the projects by creating a new table. It sends the
+ *information to the createProject method in ConnectProjects
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -30,9 +35,10 @@ public class TableNamer extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public TableNamer() {
 		setBounds(100, 100, 450, 188);
 		getContentPane().setLayout(new BorderLayout());
@@ -54,10 +60,10 @@ public class TableNamer extends JDialog {
 			buttonPane.setBackground(Color.WHITE);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
+			{//end gui design
 				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				okButton.addActionListener(new ActionListener() {//takes the user input and sends it to createProject
+					public void actionPerformed(ActionEvent e) { //to make the new table
 						String userInput = textField.getText();
 						ConnectProjects.createProject(userInput);
 						setVisible(false);
@@ -69,7 +75,7 @@ public class TableNamer extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false);
 					}

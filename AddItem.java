@@ -1,4 +1,10 @@
 package Code;
+/*This set of code is designated for adding
+ *an item to the projects table. It sends the
+ *information to the addToTable method in ConnectProjects
+ *and executes an sql statement to make the command.
+ * */
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -44,10 +50,10 @@ public class AddItem extends JDialog {
 		
 	}
 
-	/**
-	 * Create the dialog.
-	 * @param userInput 
-	 */
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public AddItem(String userInput) {
 		setBounds(100, 100, 526, 357);
 		getContentPane().setLayout(new BorderLayout());
@@ -83,16 +89,16 @@ public class AddItem extends JDialog {
 		textField_1.setBounds(79, 241, 86, 20);
 		contentPanel.add(textField_1);
 		textField_1.setColumns(10);
-		
+		//End design of the dialogue box
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String Title = userInput;
+				okButton.addActionListener(new ActionListener() {//Takes user input for all the text fields
+					public void actionPerformed(ActionEvent e) { //and sends it to the method in ConnectProjects
+						String Title = userInput;                //on button click.
 						String Name = textField.getText();
 						String Idea = textPane.getText();
 						String Price = textField_1.getText();
@@ -106,8 +112,8 @@ public class AddItem extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
+					public void actionPerformed(ActionEvent e) {     
 						setVisible(false);
 					}
 				});

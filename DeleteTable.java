@@ -1,5 +1,9 @@
 package Code;
-
+/*This set of code is designated for deleting
+ *the entire specified project table. It sends the
+ *information to the deleteTable method in ConnectProjects
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -27,6 +31,10 @@ public class DeleteTable extends JDialog {
 	public DeleteTable() {
 		
 	}
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public DeleteTable(String userInput) {
 		setBounds(100, 100, 450, 182);
 		getContentPane().setLayout(new BorderLayout());
@@ -37,14 +45,14 @@ public class DeleteTable extends JDialog {
 		JLabel lblNewLabel = new JLabel("Are you sure you want to delete " + userInput + "?");
 		lblNewLabel.setBounds(78, 52, 240, 14);
 		contentPanel.add(lblNewLabel);
-		{
+		{//end gui design
 				JPanel buttonPane = new JPanel();
 				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 				getContentPane().add(buttonPane, BorderLayout.SOUTH);
 				{
 					JButton okButton = new JButton("OK");
-					okButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
+					okButton.addActionListener(new ActionListener() {//Takes the title and sends it to
+						public void actionPerformed(ActionEvent e) { //deleteTable in ConnectProjects
 							String Title = userInput;
 							ConnectProjects.deleteTable(Title);
 							setVisible(false);
@@ -56,7 +64,7 @@ public class DeleteTable extends JDialog {
 				}
 				{
 					JButton cancelButton = new JButton("Cancel");
-					cancelButton.addActionListener(new ActionListener() {
+					cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 						public void actionPerformed(ActionEvent e) {
 							setVisible(false);
 						}

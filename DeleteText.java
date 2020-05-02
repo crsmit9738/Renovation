@@ -1,5 +1,9 @@
 package Code;
-
+/*This set of code is designated for deleting
+ *text to the specified table. It sends the
+ *information to the deleteText method in ConnectNotes
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -35,10 +39,10 @@ public class DeleteText extends JDialog {
 		
 	}
 
-	/**
-	 * Create the dialog.
-	 * @param userInput 
-	 */
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public DeleteText(String userInput) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -59,10 +63,10 @@ public class DeleteText extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
+			{//end gui design
 				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				okButton.addActionListener(new ActionListener() {//takes the title and note and sends it
+					public void actionPerformed(ActionEvent e) { //to the deleteText method in ConnectNotes.
 						String title = userInput;
 						String body = textField.getText();
 						ConnectNotes.deleteText(title, body);
@@ -75,7 +79,7 @@ public class DeleteText extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false);
 					}

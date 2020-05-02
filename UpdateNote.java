@@ -1,5 +1,9 @@
 package Code;
-
+/*This set of code is designated for updating
+ *the body to the specific notes table. It sends the
+ *information to the updateNote method in ConnectNotes
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -32,9 +36,10 @@ public class UpdateNote extends JDialog {
 		
 	}
 
-	/**
-	 * Create the dialog.
-	 */
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public UpdateNote(String userInput) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -54,10 +59,10 @@ public class UpdateNote extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
+			{//end gui design
 				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				okButton.addActionListener(new ActionListener() {//Takes the title and body from the textpanes and
+					public void actionPerformed(ActionEvent e) { //sends it to the updatNote method.
 						String Title = userInput;
 						String Body = textPane.getText();
 						ConnectNotes.UpdateNote(Title, Body);
@@ -70,6 +75,11 @@ public class UpdateNote extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
+					public void actionPerformed(ActionEvent e) {
+						setVisible(false);
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

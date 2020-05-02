@@ -1,4 +1,10 @@
 package Code;
+/*Projects, when button is clicked in main, will display
+ * the list of project table names, each on name on a button
+ * to display which table you want to view and edit. It is a great way
+ * to organize your table names so the consumer can clearly see them
+ * and choose which one they want to edit easily.
+ * */
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -26,8 +32,7 @@ public class Projects extends JFrame {
 
 	private static JPanel contentPane;
 
-	/**
-	 * Launch the application.
+	/*Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,9 +47,8 @@ public class Projects extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/*Sets up the design of the page
+	 * */
 	public Projects() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
@@ -57,7 +61,7 @@ public class Projects extends JFrame {
 		
 		JMenuItem mntmCreateNewProject = new JMenuItem("Create New Project");
 		mntmCreateNewProject.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//opens the TableNamer dialogue box
 				TableNamer name = new TableNamer();
 				name.setVisible(true);
 			}
@@ -66,7 +70,7 @@ public class Projects extends JFrame {
 		
 		JMenuItem menuItem = new JMenuItem("< Back");
 		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//closes the current window and goes to previous window before it.
 				setVisible(false);
 			}
 		});
@@ -77,13 +81,13 @@ public class Projects extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblProjects = new JLabel("Projects");
+		JLabel lblProjects = new JLabel("Projects");//creates the label saying Projects
 		lblProjects.setForeground(Color.BLUE);
 		lblProjects.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		lblProjects.setBounds(232, 22, 76, 26);
 		contentPane.add(lblProjects);
 		
-		JLabel lblPlanOutYour = new JLabel("Plan out your perfect home!");
+		JLabel lblPlanOutYour = new JLabel("Plan out your perfect home!");//creates the label saying Plan out your perfect home!
 		lblPlanOutYour.setForeground(Color.BLUE);
 		lblPlanOutYour.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		lblPlanOutYour.setBounds(163, 44, 186, 26);
@@ -95,15 +99,15 @@ public class Projects extends JFrame {
 		}
 	}
 	public static void TableNameButtons() throws Exception {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//connects to database.
 		    java.sql.Statement statement = conn.createStatement();
-		    ResultSet project = statement.executeQuery("Show Tables");
-		    int x = 0, y = 165, wide = 483, height = 39;
-		    for(; project.next(); y+=39) {
-		    	String tableName = project.getString(1);
-				JButton btnNewButton = new JButton(tableName.toUpperCase());
-				btnNewButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		    ResultSet project = statement.executeQuery("Show Tables");//executes query to bring back all table names
+		    int x = 0, y = 165, wide = 483, height = 39;//sets button dimensions
+		    for(; project.next(); y+=39) {//loops through until it gets all the title names
+		    	String tableName = project.getString(1);//sets string to table name
+				JButton btnNewButton = new JButton(tableName.toUpperCase());//adds name to button 
+				btnNewButton.addActionListener(new ActionListener() {//on click, will take to text area page that 
+					public void actionPerformed(ActionEvent e) {//will list items in button that was pressed.
 						new Items(tableName).setVisible(true);
 					}
 				});

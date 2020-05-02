@@ -1,4 +1,8 @@
 package Code;
+/*TextArea will list the current items in the button that was clicked in the previous page.
+ * the button sends the name to this page and then uses this name to execute an SQL
+ * command to populate the table with items found in the table name given.
+ * */
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.*;
@@ -59,16 +63,16 @@ public class TextArea extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
+		JMenuBar menuBar = new JMenuBar();//Allows a menu bar be put in place to save the window from getting 
+		setJMenuBar(menuBar);            //cluttered with buttons.
 		
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Save");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				UpdateNote name = new UpdateNote(userInput);
+			public void actionPerformed(ActionEvent e) {//opens the update note dialogue box to allow for body to be changed.
+				UpdateNote name = new UpdateNote(userInput);//sends title of current note.
 				name.setVisible(true);
 			}
 		});
@@ -76,8 +80,8 @@ public class TextArea extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Delete Note");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DeleteNote name = new DeleteNote();
+			public void actionPerformed(ActionEvent e) {//opens deleteNote dialogue box.
+				DeleteNote name = new DeleteNote(userInput);//sends title of current note.
 				name.setVisible(true);
 			}
 		});
@@ -85,7 +89,7 @@ public class TextArea extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("< Back");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//closes the current window and goes to previous window before it.
 				setVisible(false);
 			}
 		});
@@ -98,14 +102,14 @@ public class TextArea extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 102, 430, 186);
 		contentPane.add(scrollPane);
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		String sqlCommand = "Select * FROM " + userInput;
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/notes","root","!Crs12345");
+		table = new JTable();//allows for information to be filled from database.
+		scrollPane.setViewportView(table);//puts a scroll pane around the table.
+		String sqlCommand = "Select * FROM " + userInput;//makes sql command that will get all info from table name.
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/notes","root","!Crs12345");//connect to database
 	            java.sql.Statement statement = conn.createStatement()) {
-	            PreparedStatement pst = (PreparedStatement) conn.prepareStatement(sqlCommand);
-	            ResultSet rs = pst.executeQuery();
-	            table.setModel(DbUtils.resultSetToTableModel(rs));
+	            PreparedStatement pst = (PreparedStatement) conn.prepareStatement(sqlCommand);//makes statement be the sql command.
+	            ResultSet rs = pst.executeQuery();//executes sql command in database.
+	            table.setModel(DbUtils.resultSetToTableModel(rs));//fills the database table with information. Needs rs2xlr.jar
         } catch (SQLException e) {
 			e.printStackTrace();
 		} 

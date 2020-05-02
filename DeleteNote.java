@@ -1,5 +1,9 @@
 package Code;
-
+/*This set of code is designated for deleting
+ *the entire note. It sends the
+ *information to the deleteNote method in ConnectNotes
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -15,7 +19,7 @@ public class DeleteNote extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -30,6 +34,10 @@ public class DeleteNote extends JDialog {
 	public DeleteNote() {
 		
 	}
+	/*
+	 * Creates the gui outline of the dialogue
+	 * box.
+	 * */
 	public DeleteNote(String userInput) {
 		setBounds(100, 100, 450, 182);
 		getContentPane().setLayout(new BorderLayout());
@@ -38,16 +46,16 @@ public class DeleteNote extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Are you sure you want to delete " + userInput + "?");
-		lblNewLabel.setBounds(78, 52, 209, 14);
+		lblNewLabel.setBounds(78, 52, 240, 14);
 		contentPanel.add(lblNewLabel);
-		{
+		{//end gui design
 				JPanel buttonPane = new JPanel();
 				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 				getContentPane().add(buttonPane, BorderLayout.SOUTH);
 				{
 					JButton okButton = new JButton("OK");
-					okButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
+					okButton.addActionListener(new ActionListener() {//Sends the String title to deleteNote
+						public void actionPerformed(ActionEvent e) { //for the SQL command to be executed.
 							String Title = userInput;
 							ConnectNotes.deleteNote(Title);
 							setVisible(false);
@@ -59,7 +67,7 @@ public class DeleteNote extends JDialog {
 				}
 				{
 					JButton cancelButton = new JButton("Cancel");
-					cancelButton.addActionListener(new ActionListener() {
+					cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 						public void actionPerformed(ActionEvent e) {
 							setVisible(false);
 						}

@@ -1,13 +1,11 @@
 package Code;
 /*Hello, and Welcome to my Senior Project
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * Renovation was made to help keep track of
+ * your ideas and project items.  It uses
+ * database queries to help find what you need
+ * and store useful information you need later. The
+ * main menu is the most basic function call as it only calls
+ * two buttons and a picture to be used.
  * */
 
 import java.awt.BorderLayout;

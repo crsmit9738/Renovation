@@ -1,5 +1,9 @@
 package Code;
-
+/*This set of code is designated for deleting
+ *an item in a specific project table. It sends the
+ *information to the deleteTable method in ConnectProjects
+ *and executes an sql statement to make the command.
+ * */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -35,10 +39,10 @@ public class DeleteItem extends JDialog {
 		
 	}
 
-	/**
-	 * Create the dialog.
-	 * @param userInput 
-	 */
+	/*
+	 * The next few lines creates the design of
+	 * the dialogue box
+	 * */
 	public DeleteItem(String userInput) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -56,14 +60,15 @@ public class DeleteItem extends JDialog {
 		contentPanel.add(textField);
 		textField.setColumns(10);
 		{
+			//End design of dialogue box
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String title = userInput;
+				okButton.addActionListener(new ActionListener() {//On button click, sends the two fields to
+					public void actionPerformed(ActionEvent e) { //deleteItem to execute the sql command
+						String title = userInput;                //to remove the specific item.
 						String Name = textField.getText();
 						ConnectProjects.deleteItem(title, Name);
 						setVisible(false);
@@ -75,7 +80,7 @@ public class DeleteItem extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
+				cancelButton.addActionListener(new ActionListener() {//Just sets the frame visibility to false and closes the window.
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false);
 					}
