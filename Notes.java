@@ -97,7 +97,7 @@ public class Notes extends JFrame {
 		}
 	}
 	public static void NoteTitleButtons() throws Exception {
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/notes","root","!Crs12345");//connects to database.
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/notes","username","password");//connects to database.
 	    java.sql.Statement statement = conn.createStatement();
 	    ResultSet title = statement.executeQuery("Show Tables");//executes query to bring back all table names
 	    int x = 0, y = 165, wide = 483, height = 39;//sets button dimensions

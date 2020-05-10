@@ -16,7 +16,7 @@ public class ConnectProjects {
 	public static void main(String args[]){//main runs through and gets the connection.
 		try{  
 		Connection conn=DriverManager.getConnection(  
-		"jdbc:mysql://localhost:3306/projects","root","!Crs12345");//establishes connection to localhost database.
+		"jdbc:mysql://localhost:3306/projects","username","password");//establishes connection to localhost database.
          System.out.println("connection established");
 		}catch(Exception e){ System.out.println(e);}  
 		}
@@ -27,7 +27,7 @@ public class ConnectProjects {
 	                + "Idea VARCHAR(50),\n"
 	                + "Price DOUBLE\n"
 	                + ");";//Creates new table.
-	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//establishes connection to localhost database.  
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//establishes connection to localhost database.  
 	            java.sql.Statement statement = conn.createStatement()) {
 	            statement.execute(sql);//sends SQL statement to the corresponding schema and executes statement.
 	        } catch (SQLException e) {
@@ -37,7 +37,7 @@ public class ConnectProjects {
 	public static void addToTable(String Title, String Name, String Idea, String Price) {
 		 String sql = "Insert into " + Title +" (ProductName, Idea, Price)\n"
 				    + "Values ('" + Name + "', '" + Idea + "', '" + Price + "');";//Adds a product to the table you want.
-	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//establishes connection to localhost database.  
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//establishes connection to localhost database.  
 	            java.sql.Statement statement = conn.createStatement()) {
 	            statement.execute(sql);//sends SQL statement to the corresponding schema and executes statement.
 	        } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class ConnectProjects {
 	public static void deleteItem(String Title, String Name) {
 		 String sql = "DELETE FROM " + Title +"\n"
 				    + "WHERE ProductName ='"+ Name + "';";//Deletes product from the table list.
-	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//establishes connection to localhost database.  
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//establishes connection to localhost database.  
 	            java.sql.Statement statement = conn.createStatement()) {
 	            statement.execute(sql);//sends SQL statement to the corresponding schema and executes statement.
 	        } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class ConnectProjects {
 	    }
 	public static void deleteTable(String Title) {
 		 String sql = "DROP TABLE "+ Title +";";//Deletes sql table
-	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//establishes connection to localhost database.  
+	        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//establishes connection to localhost database.  
 	            java.sql.Statement statement = conn.createStatement()) {
 	            statement.execute(sql);//sends SQL statement to the corresponding schema and executes statement.
 	        } catch (SQLException e) {

@@ -99,7 +99,7 @@ public class Projects extends JFrame {
 		}
 	}
 	public static void TableNameButtons() throws Exception {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//connects to database.
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//connects to database.
 		    java.sql.Statement statement = conn.createStatement();
 		    ResultSet project = statement.executeQuery("Show Tables");//executes query to bring back all table names
 		    int x = 0, y = 165, wide = 483, height = 39;//sets button dimensions

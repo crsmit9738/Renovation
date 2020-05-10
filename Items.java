@@ -115,7 +115,7 @@ public class Items extends JFrame {
 		table = new JTable();//makes a new jtable
 		scrollPane.setViewportView(table);
 		String sqlCommand = "Select * FROM " + userInput;//makes sql command that will get all info from table name.
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root","!Crs12345");//connect to database
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","username","password");//connect to database
 	            java.sql.Statement statement = conn.createStatement()) {
 	            PreparedStatement pst = (PreparedStatement) conn.prepareStatement(sqlCommand);//makes statement be the sql command.
 	            ResultSet rs = pst.executeQuery();//executes sql command in database.
